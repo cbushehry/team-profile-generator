@@ -63,3 +63,32 @@ const promptMenu = () => {
   });
 };
 
+// Function to prompt for engineer details
+const promptEngineer = () => {
+    return inquirer.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is the engineer’s name?',
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'What is the engineer’s ID?',
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is the engineer’s email?',
+      },
+      {
+        type: 'input',
+        name: 'github',
+        message: 'What is the engineer’s GitHub username?',
+      }
+    ]).then(engineerData => {
+      const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+      team.push(engineer);
+      promptMenu(); // Return to menu to add more members or finish
+    });
+  };
