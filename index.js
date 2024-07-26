@@ -65,60 +65,70 @@ const promptMenu = () => {
 
 // Function to prompt for engineer details
 const promptEngineer = () => {
-    return inquirer.prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: 'What is the engineer’s name?',
-      },
-      {
-        type: 'input',
-        name: 'id',
-        message: 'What is the engineer’s ID?',
-      },
-      {
-        type: 'input',
-        name: 'email',
-        message: 'What is the engineer’s email?',
-      },
-      {
-        type: 'input',
-        name: 'github',
-        message: 'What is the engineer’s GitHub username?',
-      }
-    ]).then(engineerData => {
-      const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
-      team.push(engineer);
-      promptMenu(); // Return to menu to add more members or finish
-    });
-  };
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the engineer’s name?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the engineer’s ID?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is the engineer’s email?',
+    },
+    {
+      type: 'input',
+      name: 'github',
+      message: 'What is the engineer’s GitHub username?',
+    }
+  ]).then(engineerData => {
+    const engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
+    team.push(engineer);
+    promptMenu(); // Return to menu to add more members or finish
+  });
+};
 
-  // Function to prompt for intern details
+// Function to prompt for intern details
 const promptIntern = () => {
-    return inquirer.prompt([
-      {
-        type: 'input',
-        name: 'name',
-        message: 'What is the intern’s name?',
-      },
-      {
-        type: 'input',
-        name: 'id',
-        message: 'What is the intern’s ID?',
-      },
-      {
-        type: 'input',
-        name: 'email',
-        message: 'What is the intern’s email?',
-      },
-      {
-        type: 'input',
-        name: 'school',
-        message: 'What is the intern’s school?',
-      }
-    ]).then(internData => {
-      const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
-      team.push(intern);
-      promptMenu(); // Return to menu to add more members or finish
-    });
-  };
+  return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is the intern’s name?',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is the intern’s ID?',
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is the intern’s email?',
+    },
+    {
+      type: 'input',
+      name: 'school',
+      message: 'What is the intern’s school?',
+    }
+  ]).then(internData => {
+    const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
+    team.push(intern);
+    promptMenu(); // Return to menu to add more members or finish
+  });
+};
+
+// Function to generate the team HTML
+const buildTeam = () => {
+  const generateHTML = require('./src/generateHTML');
+  const htmlContent = generateHTML(team);
+  fs.writeFileSync(path.join(__dirname, 'dist', 'team.html'), htmlContent, 'utf-8');
+};
+
+// Start the application by prompting for manager details
+promptManager();
