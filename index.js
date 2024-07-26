@@ -92,3 +92,33 @@ const promptEngineer = () => {
       promptMenu(); // Return to menu to add more members or finish
     });
   };
+
+  // Function to prompt for intern details
+const promptIntern = () => {
+    return inquirer.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is the intern’s name?',
+      },
+      {
+        type: 'input',
+        name: 'id',
+        message: 'What is the intern’s ID?',
+      },
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is the intern’s email?',
+      },
+      {
+        type: 'input',
+        name: 'school',
+        message: 'What is the intern’s school?',
+      }
+    ]).then(internData => {
+      const intern = new Intern(internData.name, internData.id, internData.email, internData.school);
+      team.push(intern);
+      promptMenu(); // Return to menu to add more members or finish
+    });
+  };
