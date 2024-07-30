@@ -2,9 +2,7 @@
 
 This project is a command-line application that generates a dynamic HTML webpage to display a software engineering team's profiles, including their emails and GitHub profiles, based on user input collected through Inquirer. The application ensures maintainable code with unit tests using Jest.
 
-<div style="text-align: center;">
-  <img src="assets/images/teamhtml-image.png" alt="Team Profile HTML" width="75%">
-</div>
+<img src="assets/images/teamhtml-image.png" alt="Team Profile HTML" width="75%">
 
 ### Features
 - Command-line application for generating an HTML webpage to display team profiles
